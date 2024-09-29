@@ -7,7 +7,7 @@
         'left-sidebar'
         'footer';
 }
-
+ 
 /* general column padding */
 .left-sidebar-grid > * {
     padding:1rem;
