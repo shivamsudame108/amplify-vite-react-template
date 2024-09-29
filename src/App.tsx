@@ -24,7 +24,6 @@ function App() {
     <Authenticator>
       {({ signOut }) => (
     <main>
-      <!---New code Begin-->
   <section>
   <nav>
     <ul>
@@ -40,7 +39,7 @@ function App() {
     <p>Standing on the River Thames, London has been a major settlement for two millennia, its history going back to its founding by the Romans, who named it Londinium.</p>
   </article>
 </section>
-       <!---New code End-->
+      
       <h1>My todos</h1>
       <button onClick={createTodo}>+ new</button>
       <ul>
