@@ -6,7 +6,9 @@ const App = () => {
 
   // Fetch data from AWS API Gateway
   useEffect(() => {
-    fetch('https://your-api-endpoint.amazonaws.com/nav-items') // Replace with your API Gateway URL
+    fetch('https://rzojefkldd.execute-api.us-east-2.amazonaws.com/mystage') // Replace with your API Gateway URL
+      //https://rzojefkldd.execute-api.us-east-2.amazonaws.com/mystage
+      //https://your-api-endpoint.amazonaws.com/nav-items
       .then(response => response.json())
       .then(data => setNavItems(data))
       .catch(error => console.error('Error fetching data:', error));
