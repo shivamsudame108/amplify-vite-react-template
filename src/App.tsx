@@ -24,11 +24,11 @@ function App() {
     <Authenticator>
       {({ signOut }) => (
     <main>
-<div class="left-sidebar-grid">
-    <header class="header">Header</header>
-    <main class="main-content">Main content</main>
-    <section class="left-sidebar">Left sidebar</section>
-    <footer class="footer">Footer</footer>
+<div className="left-sidebar-grid">
+    <header className="header">Header</header>
+    <main className="main-content">Main content</main>
+    <section className="left-sidebar">Left sidebar</section>
+    <footer className="footer">Footer</footer>
 </div>
 
  <section>
