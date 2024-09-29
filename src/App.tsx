@@ -1,49 +1,63 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import type { Schema } from "../amplify/data/resource";
+import { generateClient } from "aws-amplify/data";
+import { Authenticator } from '@aws-amplify/ui-react'
+import '@aws-amplify/ui-react/styles.css'
 
-// Define the main App component
-const App = () => {
-  // State to store which section is active
-  const [activeSection, setActiveSection] = useState('home');
+const client = generateClient<Schema>();
 
-  // Function to render content based on the active section
-  const renderContent = () => {
-    switch (activeSection) {
-      case 'home':
-        return <p>Welcome to the Home section!</p>;
-      case 'about':
-        return <p>Learn more About us here.</p>;
-      case 'services':
-        return <p>Here are our Services.</p>;
-      case 'contact':
-        return <p>Contact us for more information.</p>;
-      default:
-        return <p>Welcome to the Home section!</p>;
-    }
-  };
+function App() {
+  const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
+
+  useEffect(() => {
+    client.models.Todo.observeQuery().subscribe({
+      next: (data) => setTodos([...data.items]),
+    });
+  }, []);
+
+  function createTodo() {
+    client.models.Todo.create({ content: window.prompt("Todo content") });
+  }
 
   return (
-    <div>
-      {/* Header */}
-      <header>
-        <h1>My Website</h1>
-      </header>
+        
+    <Authenticator>
+      {({ signOut }) => (
+    <main>
 
-      {/* Navigation */}
-      <nav>
-        <ul>
-          <li onClick={() => setActiveSection('home')}>Home</li>
-          <li onClick={() => setActiveSection('about')}>About</li>
-          <li onClick={() => setActiveSection('services')}>Services</li>
-          <li onClick={() => setActiveSection('contact')}>Contact</li>
-        </ul>
-      </nav>
 
-      {/* Section */}
-      <section>
-        {renderContent()}
-      </section>
-    </div>
+ <section>
+  <nav>
+    <ul>
+      <li><a href="#">London</a></li>
+      <li><a href="#">Paris</a></li>
+      <li><a href="#">Tokyo</a></li>
+    </ul>
+  </nav>
+  
+  <article>
+    <h1>London</h1>
+    <p>London is the capital city of England. It is the most populous city in the  United Kingdom, with a metropolitan area of over 13 million inhabitants.</p>
+    <p>Standing on the River Thames, London has been a major settlement for two millennia, its history going back to its founding by the Romans, who named it Londinium.</p>
+  </article>
+</section>
+      
+      <h1>My todos</h1>
+      <button onClick={createTodo}>+ new</button>
+      <ul>
+        {todos.map((todo) => (
+          <li key={todo.id}>{todo.content}</li>
+        ))}
+      </ul>
+
+
+      
+                <button onClick={signOut}>Sign out</button>
+    </main>
+          
+      )}
+    </Authenticator>
   );
-};
+}
 
 export default App;
