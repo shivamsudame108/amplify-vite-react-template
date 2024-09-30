@@ -21,10 +21,19 @@ const App: React.FC = () => {
 
   // Fetch data from AWS API Gateway
   useEffect(() => {
+    //fetch('https://rzojefkldd.execute-api.us-east-2.amazonaws.com/mystage') // Replace with your API Gateway URL
+      //.then(response => response.json())
+      //.then((data: NavItem[]) => setNavItems(data))
+      //.catch(error => console.error('Error fetching data:', error));
     fetch('https://rzojefkldd.execute-api.us-east-2.amazonaws.com/mystage') // Replace with your API Gateway URL
-      .then(response => response.json())
-      .then((data: NavItem[]) => setNavItems(data))
-      .catch(error => console.error('Error fetching data:', error));
+    .then(response => response.json())
+    .then(data => {
+      // Check if the body property exists and parse it
+      const body = data.body ? JSON.parse(data.body) : [];
+      console.log('Fetched nav items:', body); // Log the parsed items
+      setNavItems(body);
+    })
+    .catch(error => console.error('Error fetching data:', error));
   }, []);
 
   return (
