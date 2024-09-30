@@ -29,7 +29,7 @@ const App: React.FC = () => {
 
   return (
     // <div className="left-sidebar-grid"> {/* For grid layout */}
-      <div className="auth-container"> {/* Centering wrapper for Authenticator */}
+    //  <div className="auth-container"> {/* Centering wrapper for Authenticator */}
         <Authenticator>
           {({ signOut }) => (
             <main style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
@@ -53,7 +53,7 @@ const App: React.FC = () => {
             </main>
           )}
         </Authenticator>
-      </div>
+   //   </div>
    // </div>
   );
 };
