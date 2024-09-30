@@ -42,7 +42,7 @@ const App: React.FC = () => {
         <main>
     <div style={{ display: 'flex' }}>
       {/* Left Navigation Pane */}
-      <nav style={{ width: '200px', borderRight: '1px solid #ccc', padding: '10px' }}>
+      <nav style={{ width: '250px', borderRight: '1px solid #ccc', padding: '10px' }}>
         <ul>
           {navItems.map((item) => (
             <li key={item.id} onClick={() => setActiveContent(item.content)}>
