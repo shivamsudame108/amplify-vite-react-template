@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Authenticator } from '@aws-amplify/ui-react'
-import '@aws-amplify/ui-react/styles.css'
-//import type { Schema } from "../amplify/data/resource";
-//import { generateClient } from "aws-amplify/data";
+import { Authenticator } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
 
 // Define types for the navigation items
 interface NavItem {
@@ -18,7 +16,6 @@ const App: React.FC = () => {
 
   // Fetch data from AWS API Gateway
   useEffect(() => {
-
     fetch('https://rzojefkldd.execute-api.us-east-2.amazonaws.com/mystage') // Replace with your API Gateway URL
     .then(response => response.json())
     .then(data => {
@@ -36,32 +33,34 @@ const App: React.FC = () => {
   }, []);
 
   return (
-            
-    <Authenticator>
-      {({ signOut }) => (
-        <main>
-    <div style={{ display: 'flex' }}>
-      {/* Left Navigation Pane */}
-      <nav style={{ width: '250px', borderRight: '1px solid #ccc', padding: '10px' }}>
-        <ul>
-          {navItems.map((item) => (
-            <li key={item.id} onClick={() => setActiveContent(item.content)}>
-              {item.title}
-            </li>
-          ))}
-        </ul>
-      </nav>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
+      <Authenticator>
+        {({ signOut }) => (
+          <main style={{ display: 'flex', flexDirection: 'column', width: '100%', maxWidth: '1200px', padding: '20px' }}>
+            {/* Layout with Flexbox */}
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              {/* Left Navigation Pane */}
+              <nav style={{ width: '250px', borderRight: '1px solid #ccc', padding: '10px' }}>
+                <ul>
+                  {navItems.map((item) => (
+                    <li key={item.id} onClick={() => setActiveContent(item.content)}>
+                      {item.title}
+                    </li>
+                  ))}
+                </ul>
+              </nav>
 
-      {/* Main Content Area */}
-      <section style={{ padding: '20px' }}>
-        <h1>Content</h1>
-        <p>{activeContent}</p>
-      </section>
+              {/* Main Content Area */}
+              <section style={{ padding: '20px' }}>
+                <h1>Content</h1>
+                <p>{activeContent}</p>
+              </section>
+            </div>
+            <button onClick={signOut} style={{ alignSelf: 'flex-start', marginTop: '20px' }}>Sign out</button>
+          </main>
+        )}
+      </Authenticator>
     </div>
-    <button onClick={signOut}>Sign out</button>
-    </main>   
-      )}
-    </Authenticator>
   );
 };
 
