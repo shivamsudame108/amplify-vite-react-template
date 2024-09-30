@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Authenticator } from '@aws-amplify/ui-react'
 
 // Define types for the navigation items
 interface NavItem {
