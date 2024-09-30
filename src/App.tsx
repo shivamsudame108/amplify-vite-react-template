@@ -28,29 +28,32 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="auth-container"> {/* Centering wrapper */}
-      <Authenticator>
-        {({ signOut }) => (
-          <main>
-            <div style={{ display: 'flex' }}>
-              <nav style={{ width: '250px', borderRight: '1px solid #ccc', padding: '10px' }}>
-                <ul>
-                  {navItems.map((item) => (
-                    <li key={item.id} onClick={() => setActiveContent(item.content)}>
-                      {item.title}
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-              <section style={{ padding: '20px' }}>
-                <h1>Content</h1>
-                <p>{activeContent}</p>
-              </section>
-            </div>
-            <button onClick={signOut}>Sign out</button>
-          </main>
-        )}
-      </Authenticator>
+    <div className="left-sidebar-grid"> {/* For grid layout */}
+      <div className="auth-container"> {/* Centering wrapper for Authenticator */}
+        <Authenticator>
+          {({ signOut }) => (
+            <main style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+              {/* Main Content Area */}
+              <div style={{ display: 'flex', width: '100%' }}>
+                <nav style={{ width: '250px', borderRight: '1px solid #ccc', padding: '10px' }}>
+                  <ul>
+                    {navItems.map((item) => (
+                      <li key={item.id} onClick={() => setActiveContent(item.content)}>
+                        {item.title}
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+                <section style={{ padding: '20px' }}>
+                  <h1>Content</h1>
+                  <p>{activeContent}</p>
+                </section>
+              </div>
+              <button onClick={signOut}>Sign out</button>
+            </main>
+          )}
+        </Authenticator>
+      </div>
     </div>
   );
 };
