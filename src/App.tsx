@@ -1,11 +1,8 @@
-//import React, { useState, useEffect } from 'react';
-//import { Authenticator } from '@aws-amplify/ui-react'
-
 import React, { useEffect, useState } from "react";
-//import type { Schema } from "../amplify/data/resource";
-//import { generateClient } from "aws-amplify/data";
 import { Authenticator } from '@aws-amplify/ui-react'
 import '@aws-amplify/ui-react/styles.css'
+//import type { Schema } from "../amplify/data/resource";
+//import { generateClient } from "aws-amplify/data";
 
 // Define types for the navigation items
 interface NavItem {
@@ -21,10 +18,7 @@ const App: React.FC = () => {
 
   // Fetch data from AWS API Gateway
   useEffect(() => {
-    //fetch('https://rzojefkldd.execute-api.us-east-2.amazonaws.com/mystage') // Replace with your API Gateway URL
-      //.then(response => response.json())
-      //.then((data: NavItem[]) => setNavItems(data))
-      //.catch(error => console.error('Error fetching data:', error));
+
     fetch('https://rzojefkldd.execute-api.us-east-2.amazonaws.com/mystage') // Replace with your API Gateway URL
     .then(response => response.json())
     .then(data => {
@@ -32,6 +26,10 @@ const App: React.FC = () => {
       const body = data.body ? JSON.parse(data.body) : [];
       console.log('Fetched nav items:', body); // Log the parsed items
       setNavItems(body);
+      // Set the active content to the first item if available
+      if (body.length > 0) {
+        setActiveContent(body[0].content); // Set the content of the first item
+      }
     })
     .catch(error => console.error('Error fetching data:', error));
   }, []);
