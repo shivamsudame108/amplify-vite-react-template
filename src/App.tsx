@@ -28,7 +28,8 @@ const App: React.FC = () => {
       setNavItems(body);
       // Set the active content to the first item if available
       if (body.length > 0) {
-        setActiveContent(body[0].content); // Set the content of the first item
+        const firstItemContent = body[0].content;
+        setActiveContent(firstItemContent); // Set the content of the first item
       }
     })
     .catch(error => console.error('Error fetching data:', error));
