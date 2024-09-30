@@ -1,16 +1,22 @@
 import React, { useState, useEffect } from 'react';
 
-const App = () => {
-  const [navItems, setNavItems] = useState([]); // Store navigation items
-  const [activeContent, setActiveContent] = useState(''); // Store selected content
+// Define types for the navigation items
+interface NavItem {
+  id: string;
+  title: string;
+  content: string;
+}
+
+const App: React.FC = () => {
+  // State for storing navigation items and active content
+  const [navItems, setNavItems] = useState<NavItem[]>([]); // Store navigation items
+  const [activeContent, setActiveContent] = useState<string>(''); // Store selected content
 
   // Fetch data from AWS API Gateway
   useEffect(() => {
     fetch('https://rzojefkldd.execute-api.us-east-2.amazonaws.com/mystage') // Replace with your API Gateway URL
-      //https://rzojefkldd.execute-api.us-east-2.amazonaws.com/mystage
-      //https://your-api-endpoint.amazonaws.com/nav-items
       .then(response => response.json())
-      .then(data => setNavItems(data))
+      .then((data: NavItem[]) => setNavItems(data))
       .catch(error => console.error('Error fetching data:', error));
   }, []);
 
