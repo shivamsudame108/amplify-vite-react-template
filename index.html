@@ -4,9 +4,42 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ragamala - Raga Liabrary & Search</title>
+    <title>Ragamala - Raga Library & Search</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      /* Centering styles */
+      .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 150px; /* Adjust height as needed */
+        background-color: #f8f8f8; /* Background color for the header */
+        border-bottom: 2px solid #ccc; /* Optional bottom border */
+      }
+
+      .header h1 {
+        font-weight: bold;
+        margin: 0;
+      }
+
+      .header img {
+        width: 100px; /* Adjust logo size */
+        height: auto; /* Maintain aspect ratio */
+        margin-bottom: 10px; /* Space between logo and title */
+      }
+    </style>
   </head>
   <body>
+    <div class="header">
+      <img src="/src/Ragamala.jpg" alt="Ragamala Logo" /> <!-- Replace with your logo path -->
+      <h1>Ragamala - Raga Library & Search</h1>
+    </div>
+    
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
