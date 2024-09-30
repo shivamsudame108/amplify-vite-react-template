@@ -28,7 +28,7 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="left-sidebar-grid"> {/* For grid layout */}
+    // <div className="left-sidebar-grid"> {/* For grid layout */}
       <div className="auth-container"> {/* Centering wrapper for Authenticator */}
         <Authenticator>
           {({ signOut }) => (
@@ -54,7 +54,7 @@ const App: React.FC = () => {
           )}
         </Authenticator>
       </div>
-    </div>
+   // </div>
   );
 };
 
