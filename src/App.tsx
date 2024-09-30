@@ -21,6 +21,10 @@ const App: React.FC = () => {
   }, []);
 
   return (
+            
+    <Authenticator>
+      {({ signOut }) => (
+        <main>
     <div style={{ display: 'flex' }}>
       {/* Left Navigation Pane */}
       <nav style={{ width: '200px', borderRight: '1px solid #ccc', padding: '10px' }}>
@@ -39,6 +43,10 @@ const App: React.FC = () => {
         <p>{activeContent}</p>
       </section>
     </div>
+    <button onClick={signOut}>Sign out</button>
+    </main>   
+      )}
+    </Authenticator>
   );
 };
 
