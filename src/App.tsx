@@ -28,36 +28,28 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <div className="auth-container"> {/* Centering wrapper */}
       <Authenticator>
-        {({ signOut, user }) => (
-          <div className="auth-container"> {/* Centering wrapper for Authenticator */}
-            {user ? (
-              <div className="content-wrapper"> {/* Only render content if authenticated */}
-                <main style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-                  <div style={{ display: 'flex', width: '100%' }}>
-                    {/* Left Navigation Pane */}
-                    <nav style={{ width: '250px', borderRight: '1px solid #ccc', padding: '10px' }}>
-                      <ul>
-                        {navItems.map((item) => (
-                          <li key={item.id} onClick={() => setActiveContent(item.content)}>
-                            {item.title}
-                          </li>
-                        ))}
-                      </ul>
-                    </nav>
-                    {/* Main Content Area */}
-                    <section style={{ padding: '20px' }}>
-                      <h1>Content</h1>
-                      <p>{activeContent}</p>
-                    </section>
-                  </div>
-                  <button onClick={signOut}>Sign out</button>
-                </main>
+        {({ signOut }) => (
+          <div className="content-wrapper"> {/* Centered content */}
+            <main style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', width: '100%' }}>
+              <div style={{ display: 'flex', width: '100%' }}>
+                <nav>
+                  <ul>
+                    {navItems.map((item) => (
+                      <li key={item.id} onClick={() => setActiveContent(item.content)}>
+                        {item.title}
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+                <section>
+                  <h1>Content</h1>
+                  <p>{activeContent}</p>
+                </section>
               </div>
-            ) : (
-              <h1>Welcome! Please log in --.</h1>
-            )}
+              <button onClick={signOut}>Sign out</button>
+            </main>
           </div>
         )}
       </Authenticator>
