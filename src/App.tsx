@@ -59,10 +59,16 @@ const App: React.FC = () => {
                 </ul>
               </nav>
               {/* Main Content Area */}
-              <section style={{ padding: '20px' }}>
+               <section style={{ padding: '20px' }}>
                 <h1>Content</h1>
                 <p>{activeContent}</p>
               </section>
             </div>
           </main>
-        </d
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default App;
