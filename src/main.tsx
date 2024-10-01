@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 //import App from "./App.jsx";
-import Menu from "./Menu"; // Change to import Menu
+import Menu from "./Menu.tsx"; // Change to import Menu
 import { BrowserRouter } from "react-router-dom"; // Import BrowserRouter
 import "./index.css";
 import { Amplify } from "aws-amplify";
