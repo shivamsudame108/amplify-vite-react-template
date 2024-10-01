@@ -1,42 +1,25 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Authenticator } from '@aws-amplify/ui-react';
-import '@aws-amplify/ui-react/styles.css';
+// Menu.tsx
+import React from "react";
+import { useNavigate } from "react-router-dom"; // Assuming you are using React Router for navigation
+import { Auth } from "aws-amplify";
 
 const Menu: React.FC = () => {
   const navigate = useNavigate();
 
-  return (
-    <Authenticator>
-      {({ signOut }) => (
-        <div style={{ textAlign: 'center', marginTop: '50px' }}>
-          <h1>Menu Page</h1>
-          <div>
-            {/* Buttons to navigate to different pages */}
-            <button onClick={() => navigate('/page1')} style={buttonStyle}>
-              Go to Page 1
-            </button>
-            <button onClick={() => navigate('/page2')} style={buttonStyle}>
-              Go to Page 2
-            </button>
-            <button onClick={() => navigate('/page3')} style={buttonStyle}>
-              Go to Page 3
-            </button>
-            {/* Logout button */}
-            <button onClick={signOut} style={buttonStyle}>
-              Logout
-            </button>
-          </div>
-        </div>
-      )}
-    </Authenticator>
-  );
-};
+  const handleLogout = () => {
+    Auth.signOut()
+      .then(() => navigate("/login")) // Redirect to login after logout
+      .catch(err => console.error("Error signing out:", err));
+  };
 
-const buttonStyle = {
-  margin: '10px',
-  padding: '10px 20px',
-  fontSize: '16px',
+  return (
+    <div className="menu-container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', padding: '20px' }}>
+      <button onClick={() => navigate("/raga")}>Raga</button>
+      <button onClick={() => navigate("/tala")}>Tala</button>
+      <button onClick={() => navigate("/search")}>Search</button>
+      <button onClick={handleLogout}>Logout</button>
+    </div>
+  );
 };
 
 export default Menu;
